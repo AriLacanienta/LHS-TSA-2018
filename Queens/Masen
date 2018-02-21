@@ -1,0 +1,74 @@
+public class Game
+{
+    public static class Queen
+    {
+        int xPos;
+        int yPos;
+        String pos;
+        
+        Queen(int x, int y)
+        {
+            xPos = x; 
+            yPos = y;
+            pos = "(" + x + "," + y +")"; 
+        }
+        
+        
+    }
+    
+    public static boolean check(Queen a, Queen b, Queen c, Queen d)
+    {
+          if(a.xPos == b.xPos || a.yPos == b.yPos)
+          {
+              return false;
+          }
+          
+          else if(a.xPos == c.xPos || a.yPos == c.yPos)
+          {
+              return false;
+          }
+          
+          else if(a.xPos == d.xPos || a.yPos == d.yPos)
+          {
+              return false;
+          }
+          
+          else if(b.xPos == c.xPos || b.yPos == c.yPos)
+          {
+              return false;
+          }
+          
+          else if(b.xPos == d.xPos || b.yPos == d.yPos)
+          {
+              return false;
+          }
+          
+          else if(c.xPos == d.xPos || c.yPos == d.yPos)
+          {
+              return false;
+          }
+          
+          else
+          {
+              return true;
+          }
+     
+     }
+    
+    
+    public static void main(String args[])
+    {
+        Queen a = new Queen(1,1);
+        Queen b = new Queen(2,2);
+        Queen c = new Queen(3,3);
+        Queen d = new Queen(4,4);
+        
+        check(a, b, c, d);
+        
+        System.out.println("Status : " + check(a, b, c, d));
+    }
+
+
+}
+
+
