@@ -1,0 +1,54 @@
+public class Game {
+    static boolean out = true;
+    public static class Queen {
+        int xPos;
+        int yPos;
+        String pos;
+    
+        Queen(int x, int y) {
+            xPos = x;
+           yPos = y;
+           pos = "(" + x + ", " + y + ")";
+        }
+    }
+    
+    static boolean safe(Queen a, Queen b) {
+        if (a.xPos == b.xPos) {
+            return false;
+        } else if(a.yPos == b.yPos) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public static void main(String args[]) {
+        Queen a = new Queen(1,1);
+        Queen b = new Queen(2,2);
+        Queen c = new Queen(3,4);
+        Queen d = new Queen(4,4);
+        Queen e = new Queen(5,5);
+        Queen f = new Queen(6,6);
+        Queen g = new Queen(7,7);
+        Queen h = new Queen(8,8);
+        Queen[] queens = {a,b,c,d,e,f,g,h};
+        
+        for(Queen i : queens) {
+            if(!out) {
+                break;
+            } 
+            for(Queen j : queens) {
+                if(i.equals(j)) {
+                    continue;
+                } else if (safe(i,j)) {
+                    continue;
+                } else {
+                    System.out.println(i.pos + " and " + j.pos + " are attacking");
+                    out = false;
+                    break;
+                }
+            }
+        }
+        System.out.println(out);
+    }
+}
